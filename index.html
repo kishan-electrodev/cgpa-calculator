@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://cuet-2023-public.s3.ap-south-1.amazonaws.com/site-admin/ac61e5f2feb4b0f534b1bc4794cdc772cf1679dca69cc262d5c710ef24b321a83/Delhi%20Skill%20and%20Entrepreneurship%20University1675943805_upload_logo.png"
+        alt="University Logo"
+        class="logo"
+      />
+      <h1>GND DSEU Rohini Campus</h1>
+    </header>
+
+    <main>
+      <section class="semester-selection">
+        <h2>Select Semester</h2>
+        <select id="semester-select">
+          <option value="" disabled selected>Select Semester</option>
+          <option value="1">Semester 1</option>
+          <option value="2">Semester 2</option>
+          <option value="3">Semester 3</option>
+          <option value="4">Semester 4</option>
+        </select>
+
+        <h3>Select Input Type</h3>
+        <select id="input-type-select">
+          <option value="" disabled selected>
+            Select Marks or Grade Point
+          </option>
+          <option value="marks">Marks</option>
+          <option value="grade-point">Grade Point</option>
+        </select>
+
+        <button id="submit-semester">Submit</button>
+      </section>
+
+      <section id="subject-form" class="hidden">
+        <h2>Enter Your Marks</h2>
+        <form id="marks-form"></form>
+        <button id="calculate-cgpa">Calculate CGPA</button>
+      </section>
+    </main>
+
+    <section id="result" class="hidden">
+      <h2>CGPA Result</h2>
+      <table id="result-table"></table>
+      <p><strong>CGPA:</strong> <span id="calculated-cgpa"></span></p>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
