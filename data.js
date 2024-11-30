@@ -3,7 +3,7 @@ const semesters = {
     { code: "EE-PC101", name: "Electrical Engineering Material", credits: 3 },
     { code: "EE-PC102", name: "Basic Electronics", credits: 4 },
     { code: "FC-011", name: "Applied Mathematics-1", credits: 4 },
-    { code: "FC-021", name: "Environmental Studies", credits: 3 },
+    { code: "FC-021", name: "Basic Engineering Graphics", credits: 3 },
     { code: "FC-031", name: "Basic Engineering Workshop Technology", credits: 3 },
     { code: "FW-DP031", name: "Face the World Skills-1 (SEL)", credits: 1 },
     { code: "HS-021", name: "English Communication-1", credits: 1 },
@@ -23,6 +23,7 @@ const semesters = {
   ],
   3: [
     { code: "HS-023", name: "English Communication-III", credits: 1 },
+    { code: "HS-011", name: "Evs", credits: 1},
     { code: "EE-PC302", name: "Electrical Machine-I", credits: 5 },
     { code: "EE-PC301", name: "Electrical & Electronic Measurement", credits: 5 },
     { code: "EE-PC304", name: "Electric Workshop-II", credits: 3 },
