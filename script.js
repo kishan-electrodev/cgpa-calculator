@@ -68,8 +68,8 @@ function calculateCGPA() {
   `;
 
   inputs.forEach((input, index) => {
-    const value = parseFloat(input.value);
-    const credits = parseInt(input.dataset.credits);
+    const value = Number(input.value);
+    const credits = Number(input.dataset.credits);
 
     let gradePoint;
 
@@ -81,6 +81,7 @@ function calculateCGPA() {
 
     if (!isNaN(value)) {
       totalCredits += credits;
+      console.log(totalCredits);
       weightedGradePoints += gradePoint * credits;
 
       const row = `
