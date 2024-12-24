@@ -81,7 +81,6 @@ function calculateCGPA() {
 
     if (!isNaN(value)) {
       totalCredits += credits;
-      console.log(totalCredits);
       weightedGradePoints += gradePoint * credits;
 
       const row = `
