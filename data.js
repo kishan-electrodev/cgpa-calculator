@@ -40,4 +40,12 @@ const semesters = {
     { code: "FW-DP064", name: "Face The World Skills-IV (Entrepreneurship)", credits: 1 },
     { code: "HS-024", name: "English Communication-IV", credits: 1 },
   ],
+  5: [
+    {code : "EE-PC501",name: "Non-Conventional Energy Sources",credits:5},
+    {code :"EE-PC502", name: "Digital Electronics and Microprocessor",credits:5},
+    {code :"EE-PC504", name: "Basics of Electronics Communication",credits:3},
+    {code :"EE-PE503", name: "Elective",credits:3},
+    {code :"EE-SI501", name: "Summer Training",credits:3},
+    {code :"HS-035", name: "English for Success",credits:1},
+  ]
 };
