@@ -38,12 +38,12 @@ function generateMarksForm(semester, inputType) {
     if (inputType === "marks") {
       subjectRow.innerHTML = `
         <label>${subject.name} (${subject.credits} Credits)</label>
-        <input type="number" placeholder="Enter Marks (0-100)" data-credits="${subject.credits}">
+        <input type="number" placeholder="Enter Marks (0-100)" data-credits="${subject.credits}" max="100" min="0">
       `;
     } else if (inputType === "grade-point") {
       subjectRow.innerHTML = `
         <label>${subject.name} (${subject.credits} Credits)</label>
-        <input type="number" placeholder="Enter Grade Point (0-10)" data-credits="${subject.credits}">
+        <input type="number" placeholder="Enter Grade Point (0-10)" data-credits="${subject.credits}" max="10" min="0" >
       `;
     }
     marksForm.appendChild(subjectRow);
@@ -67,28 +67,38 @@ function calculateCGPA() {
     </tr>
   `;
 
+  let hasInvalidInput = false;
+
   inputs.forEach((input, index) => {
     const value = Number(input.value);
     const credits = Number(input.dataset.credits);
+    const inputType = inputTypeSelect.value;
 
-    let gradePoint;
-
-    if (inputTypeSelect.value === "marks") {
-      gradePoint = getGradePoint(value);
-    } else if (inputTypeSelect.value === "grade-point") {
-      gradePoint = value;
+    // ❌ Validate range
+    if (inputType === "marks" && value > 100) {
+      alert("Marks should be 0 - 100");
+      hasInvalidInput = true;
+      return;
+    }
+    if (inputType === "grade-point" && value > 10) {
+      alert("Grade Point should be 0 - 10");
+      hasInvalidInput = true;
+      return;
     }
 
     if (!isNaN(value)) {
+      let gradePoint = inputType === "marks" ? getGradePoint(value) : value;
       totalCredits += credits;
       weightedGradePoints += gradePoint * credits;
 
+      const isFail = (inputType === "marks" && value < 40) || (inputType === "grade-point" && value < 4);
+
       const row = `
-        <tr>
+        <tr style="color: ${isFail ? 'red' : 'inherit'};">
           <td>${semesters[semesterSelect.value][index].code}</td>
           <td>${semesters[semesterSelect.value][index].name}</td>
           <td>${credits}</td>
-          <td>${getGradeLetter(value, inputTypeSelect.value)}</td>
+          <td>${getGradeLetter(value, inputType)}</td>
           <td>${gradePoint}</td>
         </tr>
       `;
@@ -96,10 +106,13 @@ function calculateCGPA() {
     }
   });
 
+  if (hasInvalidInput) return;
+
   const cgpa = (weightedGradePoints / totalCredits).toFixed(2);
   calculatedCgpa.textContent = cgpa;
   resultSection.classList.remove("hidden");
 }
+
 
 function getGradePoint(marks) {
   if (marks >= 90) return 10;
