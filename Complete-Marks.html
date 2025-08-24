@@ -99,18 +99,21 @@
     <div class="result" id="result"></div>
   </div>
 
-  <script>
-    function calculateCGPA() {
-      const cgpa4 = parseFloat(document.getElementById("cgpa4").value) || 0;
-      const sgpa5 = parseFloat(document.getElementById("sgpa5").value) || 0;
-      const sgpa6 = parseFloat(document.getElementById("sgpa6").value) || 0;
+ <script>
+  function calculateCGPA() {
+    const cgpa4 = parseFloat(document.getElementById("cgpa4").value) || 0;
+    const sgpa5 = parseFloat(document.getElementById("sgpa5").value) || 0;
+    const sgpa6 = parseFloat(document.getElementById("sgpa6").value) || 0;
 
-      // Formula: (85*4th cgpa + 21*5sgpa + 22*6 sgpa)/128
-      const finalCgpa = (85 * cgpa4 + 21 * sgpa5 + 22 * sgpa6) / 128;
+    // Formula: (85*4th cgpa + 21*5sgpa + 22*6 sgpa)/128
+    let finalCgpa = (85 * cgpa4 + 21 * sgpa5 + 22 * sgpa6) / 128;
 
-      document.getElementById("result").textContent = 
-        "Final CGPA: " + finalCgpa.toFixed(3);
-    }
-  </script>
+    // Round to 2 decimal places properly
+    finalCgpa = Math.round(finalCgpa * 100) / 100;
+
+    document.getElementById("result").textContent = 
+      "Final CGPA: " + finalCgpa.toFixed(2);
+  }
+</script>
 </body>
 </html>
